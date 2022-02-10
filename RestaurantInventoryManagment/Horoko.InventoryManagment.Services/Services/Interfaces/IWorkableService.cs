@@ -11,6 +11,6 @@ namespace Horoko.InventoryManagment.Services.Services.Interfaces
         int MostProfitableWeek();
         int GetArticlesSoldOnSpecificDate(int articleId, DateTime date);
         Packaging GetPackagingWhichMadeLeastProfit();
-        List<IngredientAmountAndSalesRecordJoined> GetDetailedView();
+        List<IngredientAmountAndSalesViewModel> GetDetailedView();
     }
 }

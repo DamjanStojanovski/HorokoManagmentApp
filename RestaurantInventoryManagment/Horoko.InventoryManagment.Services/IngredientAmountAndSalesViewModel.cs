@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Horoko.InventoryManagment.Services
 {
-    public class IngredientAmountAndSalesRecordJoined
+    public class IngredientAmountAndSalesViewModel
     {
-        public IngredientAmountAndSalesRecordJoined(long articleId, long id, DateTime date, int amount, decimal price)
+        public IngredientAmountAndSalesViewModel(long articleId, long id, DateTime date, int amount, decimal price)
         {
             this.ArticleId = articleId;
             this.Id = id;

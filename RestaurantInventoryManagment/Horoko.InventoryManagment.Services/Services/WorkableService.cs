@@ -12,10 +12,23 @@ namespace Horoko.InventoryManagment.Services.Services
     {
         public int GetArticlesSoldOnSpecificDate(int articleId, DateTime date)
         {
-           
+            GetDataService ds = new GetDataService();
+            var productAmountRecords = ds.GetIngredientAmountData(Config.IngredientAmoutFilePath);
+            var salesRecords = ds.GetSalesRecordData(Config.SalesRecordsFilePath);
+
+            var productAmountAndSalesJoined = productAmountRecords
+                .Join
+                (
+                salesRecords,
+                prodAmount => prodAmount.Id,
+                sales => sales.IngredientPortionId,
+                (prodAmountTab, salesTab) => new IngredientAmountAndSalesViewModel(prodAmountTab.ArticleId, prodAmountTab.Id, salesTab.DateAndTimeOfOrder.Date,salesTab.Amount, salesTab.Price)
+                );
+
+            return productAmountAndSalesJoined.Where(x => x.ArticleId == articleId && x.DateAndTimeOfOrder == date).Count();
         }
 
-        public List<IngredientAmountAndSalesRecordJoined> GetDetailedView()
+        public List<IngredientAmountAndSalesViewModel> GetDetailedView()
         {
             throw new NotImplementedException();
         }
@@ -34,7 +47,29 @@ namespace Horoko.InventoryManagment.Services.Services
 
         public Packaging GetPackagingWhichMadeLeastProfit()
         {
-            throw new NotImplementedException();
+            GetDataService ds = new GetDataService();
+            var productInfoRecords = ds.GetIngredientInfoData(Config.IngredientInfoFilePath);
+            var productAmountRecords = ds.GetIngredientAmountData(Config.IngredientAmoutFilePath);
+            var salesRecords = ds.GetSalesRecordData(Config.SalesRecordsFilePath);
+
+            var tablesJoined = productInfoRecords.Join
+                (
+                    productAmountRecords,
+                    infoTab => infoTab.ArticleNumber,
+                    amountTab => amountTab.ArticleId,
+                    (infoTab, amountTab) =>
+                    new InfoAmountViewModel(infoTab.ArticleNumber, infoTab.ArticleDescription, infoTab.Packaging, infoTab.Priceperunit, infoTab.Group, amountTab.Id, amountTab.UnitPerSaleMark, amountTab.AmountPerSale)
+                )
+                .Join
+                (
+                   salesRecords,
+                   infoAndAmount => infoAndAmount.Id,
+                   sales => sales.IngredientPortionId,
+                   (infoAmount, sales) => new InfoAmountAndSalesViewModel(infoAmount.ArticleId, infoAmount.ArticleDescription, infoAmount.Packaging, infoAmount.Priceperunit, infoAmount.Group, infoAmount.Id, infoAmount.UnitPerSale, infoAmount.AmountPerSale, sales.DateAndTimeOfOrder.Date, sales.Amount, sales.Price)
+                );
+
+            return tablesJoined.OrderBy(x => (x.Amount * x.Price)).First().Packaging;
+
         }
 
         public int MostProfitableWeek()
