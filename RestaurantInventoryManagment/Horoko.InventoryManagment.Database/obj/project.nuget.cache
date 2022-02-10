@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NIiObHj8WktDLkMiZnLYCyo44wOhp4My4vpNhpBul0tMmeyt0LBVpMF8SuwX/mSphllTIF1fjV9xBmCzymfIYA==",
+  "dgSpecHash": "HGWnwZGiFJHzYm+M0bLQUz9INY4WAZPgrsEPaFYEFCNEtCPfbBUr6WGLpMFIzHETJCafZBCsteBA9J/vCpgi1w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\Horoko.InventoryManagment.Database\\Horoko.InventoryManagment.Database.csproj",
+  "projectFilePath": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\RestaurantInventoryManagment\\Horoko.InventoryManagment.Database\\Horoko.InventoryManagment.Database.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

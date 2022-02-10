@@ -2104,11 +2104,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\Horoko.InventoryManagment.Console\\Horoko.InventoryManagment.Console.csproj",
+      "projectUniqueName": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\RestaurantInventoryManagment\\Horoko.InventoryManagment.Console\\Horoko.InventoryManagment.Console.csproj",
       "projectName": "Horoko.InventoryManagment.Console",
-      "projectPath": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\Horoko.InventoryManagment.Console\\Horoko.InventoryManagment.Console.csproj",
+      "projectPath": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\RestaurantInventoryManagment\\Horoko.InventoryManagment.Console\\Horoko.InventoryManagment.Console.csproj",
       "packagesPath": "C:\\Users\\Damjan Stojanovski\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\Horoko.InventoryManagment.Console\\obj\\",
+      "outputPath": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\RestaurantInventoryManagment\\Horoko.InventoryManagment.Console\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Damjan Stojanovski\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2125,8 +2125,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\Horoko.InventoryManagment.Services\\Horoko.InventoryManagment.Services.csproj": {
-              "projectPath": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\Horoko.InventoryManagment.Services\\Horoko.InventoryManagment.Services.csproj"
+            "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\RestaurantInventoryManagment\\Horoko.InventoryManagment.Services\\Horoko.InventoryManagment.Services.csproj": {
+              "projectPath": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\RestaurantInventoryManagment\\Horoko.InventoryManagment.Services\\Horoko.InventoryManagment.Services.csproj"
             }
           }
         }

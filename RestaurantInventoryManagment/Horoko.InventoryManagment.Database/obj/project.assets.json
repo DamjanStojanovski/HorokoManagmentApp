@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\Horoko.InventoryManagment.Database\\Horoko.InventoryManagment.Database.csproj",
+      "projectUniqueName": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\RestaurantInventoryManagment\\Horoko.InventoryManagment.Database\\Horoko.InventoryManagment.Database.csproj",
       "projectName": "Horoko.InventoryManagment.Database",
-      "projectPath": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\Horoko.InventoryManagment.Database\\Horoko.InventoryManagment.Database.csproj",
+      "projectPath": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\RestaurantInventoryManagment\\Horoko.InventoryManagment.Database\\Horoko.InventoryManagment.Database.csproj",
       "packagesPath": "C:\\Users\\Damjan Stojanovski\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\Horoko.InventoryManagment.Database\\obj\\",
+      "outputPath": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\RestaurantInventoryManagment\\Horoko.InventoryManagment.Database\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Damjan Stojanovski\\AppData\\Roaming\\NuGet\\NuGet.Config",

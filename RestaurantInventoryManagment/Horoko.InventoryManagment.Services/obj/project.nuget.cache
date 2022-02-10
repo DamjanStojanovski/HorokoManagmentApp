@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+AnHT4EB2KaATzo5BKwnzBEjjGOYSyH+77s5BEbNzTzJKFxFt9ACfl1Ldd84DvwcbmkzOcthqzSkO7TqygiR4w==",
+  "dgSpecHash": "eLYCzL1ZY8yJ7ffoi24A+b4YWqL/1NVLKeUO7fhN/A0mDCv3vCb0Wdon3Qhg85AGcVc0tRtdp8QKSjPoeTd9jg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\Horoko.InventoryManagment.Services\\Horoko.InventoryManagment.Services.csproj",
+  "projectFilePath": "C:\\Users\\Damjan Stojanovski\\source\\repos\\Horoko.InventoryManagment\\RestaurantInventoryManagment\\Horoko.InventoryManagment.Services\\Horoko.InventoryManagment.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Damjan Stojanovski\\.nuget\\packages\\csvhelper\\27.2.1\\csvhelper.27.2.1.nupkg.sha512",
     "C:\\Users\\Damjan Stojanovski\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
