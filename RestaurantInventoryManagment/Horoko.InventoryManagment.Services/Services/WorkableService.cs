@@ -9,11 +9,15 @@ namespace Horoko.InventoryManagment.Services.Services
 {
     public class WorkableService : IWorkableService
     {
+        private GetDataService _dataservice;
+        public WorkableService(GetDataService dataService)
+        {
+            _dataservice = dataService;
+        }
         public int GetArticlesSoldOnSpecificDate(int articleId, DateTime date)
         {
-            GetDataService ds = new GetDataService();
-            var productAmountRecords = ds.GetIngredientAmountData(Config.IngredientAmoutFilePath);
-            var salesRecords = ds.GetSalesRecordData(Config.SalesRecordsFilePath);
+            var productAmountRecords = _dataservice.GetIngredientAmountData(Config.IngredientAmoutFilePath);
+            var salesRecords = _dataservice.GetSalesRecordData(Config.SalesRecordsFilePath);
 
             var productAmountAndSalesJoined = productAmountRecords
                 .Join
@@ -29,11 +33,9 @@ namespace Horoko.InventoryManagment.Services.Services
 
         public List<DetailedViewResultViewModel> GetDetailedView()
         {
-            GetDataService ds = new GetDataService();
-            var productInfoRecords = ds.GetIngredientInfoData(Config.IngredientInfoFilePath);
-            var productAmountRecords = ds.GetIngredientAmountData(Config.IngredientAmoutFilePath);
-            var salesRecords = ds.GetSalesRecordData(Config.SalesRecordsFilePath);
-
+            var productInfoRecords = _dataservice.GetIngredientInfoData(Config.IngredientInfoFilePath);
+            var productAmountRecords = _dataservice.GetIngredientAmountData(Config.IngredientAmoutFilePath);
+            var salesRecords = _dataservice.GetSalesRecordData(Config.SalesRecordsFilePath);
             var tablesJoined = productInfoRecords.Join
                 (
                     productAmountRecords,
@@ -55,6 +57,7 @@ namespace Horoko.InventoryManagment.Services.Services
                 x.DateAndTimeOfOrder,
                 x.Id
             });
+
             List<DetailedViewResultViewModel> result = new List<DetailedViewResultViewModel>();
             decimal sumOfSales = 0;
             foreach (var item in ex)
@@ -75,8 +78,7 @@ namespace Horoko.InventoryManagment.Services.Services
 
         public DateTime GetMostSalesMadeDate()
         {
-            GetDataService ds = new GetDataService();
-            var salesRecords = ds.GetSalesRecordData(Config.SalesRecordsFilePath);
+            var salesRecords = _dataservice.GetSalesRecordData(Config.SalesRecordsFilePath);
 
             return salesRecords.GroupBy(x => x.DateAndTimeOfOrder.Date, (date, listOfItems) =>
             {
@@ -87,10 +89,9 @@ namespace Horoko.InventoryManagment.Services.Services
 
         public Packaging GetPackagingWhichMadeLeastProfit()
         {
-            GetDataService ds = new GetDataService();
-            var productInfoRecords = ds.GetIngredientInfoData(Config.IngredientInfoFilePath);
-            var productAmountRecords = ds.GetIngredientAmountData(Config.IngredientAmoutFilePath);
-            var salesRecords = ds.GetSalesRecordData(Config.SalesRecordsFilePath);
+            var productInfoRecords = _dataservice.GetIngredientInfoData(Config.IngredientInfoFilePath);
+            var productAmountRecords = _dataservice.GetIngredientAmountData(Config.IngredientAmoutFilePath);
+            var salesRecords = _dataservice.GetSalesRecordData(Config.SalesRecordsFilePath);
 
             var tablesJoined = productInfoRecords.Join
                 (
@@ -114,14 +115,12 @@ namespace Horoko.InventoryManagment.Services.Services
 
         public int MostProfitableWeek()
         {
-            GetDataService ds = new GetDataService();
-            var salesRecords = ds.GetSalesRecordData(Config.SalesRecordsFilePath);
+            var salesRecords = _dataservice.GetSalesRecordData(Config.SalesRecordsFilePath);
 
             var groupsByWeek = salesRecords.GroupBy(i => CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
                                     i.DateAndTimeOfOrder.Date, CalendarWeekRule.FirstDay, DayOfWeek.Monday));
 
             Dictionary<int, decimal> data = new Dictionary<int, decimal>();
-
             decimal maxSales = 0;
             foreach (var item in groupsByWeek)
             {
@@ -131,7 +130,6 @@ namespace Horoko.InventoryManagment.Services.Services
                 }
                 data.Add(item.Key, maxSales);
             };
-
             return data.OrderByDescending(x => x.Value).First().Key;
         }
     }
