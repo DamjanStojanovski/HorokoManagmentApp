@@ -1,5 +1,4 @@
-﻿using Horoko.InventoryManagment.Database.Models;
-using Horoko.InventoryManagment.DataBase.Models.Enums;
+﻿using Horoko.InventoryManagment.DataBase.Models.Enums;
 using Horoko.InventoryManagment.Services.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -28,9 +27,50 @@ namespace Horoko.InventoryManagment.Services.Services
             return productAmountAndSalesJoined.Where(x => x.ArticleId == articleId && x.DateAndTimeOfOrder == date).Count();
         }
 
-        public List<IngredientAmountAndSalesViewModel> GetDetailedView()
+        public List<DetailedViewResultViewModel> GetDetailedView()
         {
-            throw new NotImplementedException();
+            GetDataService ds = new GetDataService();
+            var productInfoRecords = ds.GetIngredientInfoData(Config.IngredientInfoFilePath);
+            var productAmountRecords = ds.GetIngredientAmountData(Config.IngredientAmoutFilePath);
+            var salesRecords = ds.GetSalesRecordData(Config.SalesRecordsFilePath);
+
+            var tablesJoined = productInfoRecords.Join
+                (
+                    productAmountRecords,
+                    infoTab => infoTab.ArticleNumber,
+                    amountTab => amountTab.ArticleId,
+                    (infoTab, amountTab) =>
+                    new InfoAmountViewModel(infoTab.ArticleNumber, infoTab.ArticleDescription, infoTab.Packaging, infoTab.Priceperunit, infoTab.Group, amountTab.Id, amountTab.UnitPerSaleMark, amountTab.AmountPerSale)
+                )
+                .Join
+                (
+                   salesRecords,
+                   infoAndAmount => infoAndAmount.Id,
+                   sales => sales.IngredientPortionId,
+                   (infoAmount, sales) => new InfoAmountAndSalesViewModel(infoAmount.ArticleId, infoAmount.ArticleDescription, infoAmount.Packaging, infoAmount.Priceperunit, infoAmount.Group, infoAmount.Id, infoAmount.UnitPerSale, infoAmount.AmountPerSale, sales.DateAndTimeOfOrder.Date, sales.Amount, sales.Price)
+                );
+
+            var ex = tablesJoined.GroupBy(x => new
+            {
+                x.DateAndTimeOfOrder,
+                x.Id
+            });
+            List<DetailedViewResultViewModel> result = new List<DetailedViewResultViewModel>();
+            decimal sumOfSales = 0;
+            foreach (var item in ex)
+            {
+                DetailedViewResultViewModel model = new DetailedViewResultViewModel();
+                for (int i = 0; i < item.Count(); i++)
+                {
+                    sumOfSales += (item.ElementAt(i).Amount * item.ElementAt(i).Price);
+                }
+                model.ArticleId = item.Key.Id;
+                model.Date = item.Key.DateAndTimeOfOrder;
+                model.SumOfSalePerDate = sumOfSales;
+                result.Add(model);
+            }
+
+            return result;
         }
 
         public DateTime GetMostSalesMadeDate()

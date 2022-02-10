@@ -11,14 +11,15 @@ namespace Horoko.InventoryManagment.Console
         static void Main(string[] args)
         {
             WorkableService ws = new WorkableService();
-            //var date = ws.GetMostSalesMadeDate();
-            //var date2 = ws.MostProfitableWeek();
-            //var mostSoldVodka = ws.GetArticlesSoldOnSpecificDate(66999, new DateTime(2022, 01, 25));
-            //System.Console.WriteLine("The bottles of votka sold on 25.01.2022 is " + mostSoldVodka);
-            //System.Console.WriteLine(date);
-            //System.Console.WriteLine(date2);
-            var ex = ws.GetPackagingWhichMadeLeastProfit();
-            System.Console.WriteLine(ex);
+            var date = ws.GetMostSalesMadeDate();
+            var week = ws.MostProfitableWeek();
+            var mostSoldVodka = ws.GetArticlesSoldOnSpecificDate(66999, new DateTime(2022, 01, 25));
+            var leastPrfitPackage = ws.GetPackagingWhichMadeLeastProfit();
+            System.Console.WriteLine("The bottles of votka sold on 25.01.2022 is " + mostSoldVodka);
+            System.Console.WriteLine($"The most sales date is {date}");
+            System.Console.WriteLine($"The most sales week of the year is is {week}");
+            System.Console.WriteLine($"There are {mostSoldVodka} number of bottles of votka sold");
+            System.Console.WriteLine($"There packaging with least profit is{leastPrfitPackage}");
             System.Console.ReadLine();
         }
     }

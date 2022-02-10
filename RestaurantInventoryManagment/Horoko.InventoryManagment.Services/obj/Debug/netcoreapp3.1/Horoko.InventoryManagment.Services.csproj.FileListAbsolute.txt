@@ -10,3 +10,15 @@ C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\Horoko.Invent
 C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\Horoko.InventoryManagment.Services\obj\Debug\netcoreapp3.1\Horoko.InventoryManagment.Services.csproj.CopyComplete
 C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\Horoko.InventoryManagment.Services\obj\Debug\netcoreapp3.1\Horoko.InventoryManagment.Services.dll
 C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\Horoko.InventoryManagment.Services\obj\Debug\netcoreapp3.1\Horoko.InventoryManagment.Services.pdb
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\RestaurantInventoryManagment\Horoko.InventoryManagment.Services\bin\Debug\netcoreapp3.1\Horoko.InventoryManagment.Services.deps.json
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\RestaurantInventoryManagment\Horoko.InventoryManagment.Services\bin\Debug\netcoreapp3.1\Horoko.InventoryManagment.Services.dll
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\RestaurantInventoryManagment\Horoko.InventoryManagment.Services\bin\Debug\netcoreapp3.1\Horoko.InventoryManagment.Services.pdb
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\RestaurantInventoryManagment\Horoko.InventoryManagment.Services\bin\Debug\netcoreapp3.1\Horoko.InventoryManagment.Database.dll
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\RestaurantInventoryManagment\Horoko.InventoryManagment.Services\bin\Debug\netcoreapp3.1\Horoko.InventoryManagment.Database.pdb
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\RestaurantInventoryManagment\Horoko.InventoryManagment.Services\obj\Debug\netcoreapp3.1\Horoko.InventoryManagment.Services.csprojAssemblyReference.cache
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\RestaurantInventoryManagment\Horoko.InventoryManagment.Services\obj\Debug\netcoreapp3.1\Horoko.InventoryManagment.Services.AssemblyInfoInputs.cache
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\RestaurantInventoryManagment\Horoko.InventoryManagment.Services\obj\Debug\netcoreapp3.1\Horoko.InventoryManagment.Services.AssemblyInfo.cs
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\RestaurantInventoryManagment\Horoko.InventoryManagment.Services\obj\Debug\netcoreapp3.1\Horoko.InventoryManagment.Services.csproj.CoreCompileInputs.cache
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\RestaurantInventoryManagment\Horoko.InventoryManagment.Services\obj\Debug\netcoreapp3.1\Horoko.InventoryManagment.Services.csproj.CopyComplete
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\RestaurantInventoryManagment\Horoko.InventoryManagment.Services\obj\Debug\netcoreapp3.1\Horoko.InventoryManagment.Services.dll
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\RestaurantInventoryManagment\Horoko.InventoryManagment.Services\obj\Debug\netcoreapp3.1\Horoko.InventoryManagment.Services.pdb

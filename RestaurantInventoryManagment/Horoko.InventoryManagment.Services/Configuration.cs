@@ -15,7 +15,7 @@ namespace Horoko.InventoryManagment.Services
         private static readonly Configuration _config;
         static Config()
         {
-            using (StreamReader r = new StreamReader(@"C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\Horoko.InventoryManagment.Console\config.json"))
+            using (StreamReader r = new StreamReader(@"C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\RestaurantInventoryManagment\Horoko.InventoryManagment.Console\config.json"))
             {
                 var json = r.ReadToEnd();
                 _config = JsonConvert.DeserializeObject<Configuration>(json);
