@@ -1,0 +1,8 @@
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\Horoko.InventoryManagment.Database\bin\Debug\netcoreapp3.1\Horoko.InventoryManagment.Database.deps.json
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\Horoko.InventoryManagment.Database\bin\Debug\netcoreapp3.1\Horoko.InventoryManagment.Database.dll
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\Horoko.InventoryManagment.Database\bin\Debug\netcoreapp3.1\Horoko.InventoryManagment.Database.pdb
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\Horoko.InventoryManagment.Database\obj\Debug\netcoreapp3.1\Horoko.InventoryManagment.Database.AssemblyInfoInputs.cache
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\Horoko.InventoryManagment.Database\obj\Debug\netcoreapp3.1\Horoko.InventoryManagment.Database.AssemblyInfo.cs
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\Horoko.InventoryManagment.Database\obj\Debug\netcoreapp3.1\Horoko.InventoryManagment.Database.csproj.CoreCompileInputs.cache
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\Horoko.InventoryManagment.Database\obj\Debug\netcoreapp3.1\Horoko.InventoryManagment.Database.dll
+C:\Users\Damjan Stojanovski\source\repos\Horoko.InventoryManagment\Horoko.InventoryManagment.Database\obj\Debug\netcoreapp3.1\Horoko.InventoryManagment.Database.pdb
