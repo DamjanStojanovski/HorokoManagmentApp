@@ -1,4 +1,6 @@
-﻿using Horoko.InventoryManagment.DataBase.Models.Enums;
+﻿using Horoko.InventoryManagment.Database.Models;
+using Horoko.InventoryManagment.DataBase.Models;
+using Horoko.InventoryManagment.DataBase.Models.Enums;
 using Horoko.InventoryManagment.Services.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,20 +11,12 @@ namespace Horoko.InventoryManagment.Services.Services
 {
     public class WorkableService : IWorkableService
     {
-        private GetDataService _dataservice;
-        public WorkableService(GetDataService dataService)
+        public int GetArticlesSoldOnSpecificDate(int articleId, DateTime date, List<SalesRecord> salesTable, List<IngredientAmount> ingredeientAmount)
         {
-            _dataservice = dataService;
-        }
-        public int GetArticlesSoldOnSpecificDate(int articleId, DateTime date)
-        {
-            var productAmountRecords = _dataservice.GetIngredientAmountData(Config.IngredientAmoutFilePath);
-            var salesRecords = _dataservice.GetSalesRecordData(Config.SalesRecordsFilePath);
-
-            var productAmountAndSalesJoined = productAmountRecords
+            var productAmountAndSalesJoined = ingredeientAmount
                 .Join
                 (
-                salesRecords,
+                salesTable,
                 prodAmount => prodAmount.Id,
                 sales => sales.IngredientPortionId,
                 (prodAmountTab, salesTab) => new IngredientAmountAndSalesViewModel(prodAmountTab.ArticleId, prodAmountTab.Id, salesTab.DateAndTimeOfOrder.Date,salesTab.Amount, salesTab.Price)
@@ -31,14 +25,11 @@ namespace Horoko.InventoryManagment.Services.Services
             return productAmountAndSalesJoined.Where(x => x.ArticleId == articleId && x.DateAndTimeOfOrder == date).Count();
         }
 
-        public List<DetailedViewResultViewModel> GetDetailedView()
+        public List<DetailedViewResultViewModel> GetDetailedView(List<SalesRecord> salesTable, List<IngredientInfo> ingredientInfo, List<IngredientAmount> ingredeientAmount)
         {
-            var productInfoRecords = _dataservice.GetIngredientInfoData(Config.IngredientInfoFilePath);
-            var productAmountRecords = _dataservice.GetIngredientAmountData(Config.IngredientAmoutFilePath);
-            var salesRecords = _dataservice.GetSalesRecordData(Config.SalesRecordsFilePath);
-            var tablesJoined = productInfoRecords.Join
+            var tablesJoined = ingredientInfo.Join
                 (
-                    productAmountRecords,
+                    ingredeientAmount,
                     infoTab => infoTab.ArticleNumber,
                     amountTab => amountTab.ArticleId,
                     (infoTab, amountTab) =>
@@ -46,7 +37,7 @@ namespace Horoko.InventoryManagment.Services.Services
                 )
                 .Join
                 (
-                   salesRecords,
+                   salesTable,
                    infoAndAmount => infoAndAmount.Id,
                    sales => sales.IngredientPortionId,
                    (infoAmount, sales) => new InfoAmountAndSalesViewModel(infoAmount.ArticleId, infoAmount.ArticleDescription, infoAmount.Packaging, infoAmount.Priceperunit, infoAmount.Group, infoAmount.Id, infoAmount.UnitPerSale, infoAmount.AmountPerSale, sales.DateAndTimeOfOrder.Date, sales.Amount, sales.Price)
@@ -76,26 +67,20 @@ namespace Horoko.InventoryManagment.Services.Services
             return result;
         }
 
-        public DateTime GetMostSalesMadeDate()
+        public DateTime GetMostSalesMadeDate(List<SalesRecord> salesTable)
         {
-            var salesRecords = _dataservice.GetSalesRecordData(Config.SalesRecordsFilePath);
-
-            return salesRecords.GroupBy(x => x.DateAndTimeOfOrder.Date, (date, listOfItems) =>
+            return salesTable.GroupBy(x => x.DateAndTimeOfOrder.Date, (date, listOfItems) =>
             {
                 var maxSale = listOfItems.Sum(i => i.Price * i.Amount);
                 return new { date, maxSale };
             }).OrderByDescending(x => x.maxSale).First().date;
         }
 
-        public Packaging GetPackagingWhichMadeLeastProfit()
+        public Packaging GetPackagingWhichMadeLeastProfit(List<SalesRecord> salesTable, List<IngredientInfo> ingredientInfo, List<IngredientAmount> ingredeientAmount)
         {
-            var productInfoRecords = _dataservice.GetIngredientInfoData(Config.IngredientInfoFilePath);
-            var productAmountRecords = _dataservice.GetIngredientAmountData(Config.IngredientAmoutFilePath);
-            var salesRecords = _dataservice.GetSalesRecordData(Config.SalesRecordsFilePath);
-
-            var tablesJoined = productInfoRecords.Join
+            var tablesJoined = ingredientInfo.Join
                 (
-                    productAmountRecords,
+                    ingredeientAmount,
                     infoTab => infoTab.ArticleNumber,
                     amountTab => amountTab.ArticleId,
                     (infoTab, amountTab) =>
@@ -103,7 +88,7 @@ namespace Horoko.InventoryManagment.Services.Services
                 )
                 .Join
                 (
-                   salesRecords,
+                   salesTable,
                    infoAndAmount => infoAndAmount.Id,
                    sales => sales.IngredientPortionId,
                    (infoAmount, sales) => new InfoAmountAndSalesViewModel(infoAmount.ArticleId, infoAmount.ArticleDescription, infoAmount.Packaging, infoAmount.Priceperunit, infoAmount.Group, infoAmount.Id, infoAmount.UnitPerSale, infoAmount.AmountPerSale, sales.DateAndTimeOfOrder.Date, sales.Amount, sales.Price)
@@ -113,11 +98,9 @@ namespace Horoko.InventoryManagment.Services.Services
 
         }
 
-        public int MostProfitableWeek()
+        public int MostProfitableWeek(List<SalesRecord> salesTable)
         {
-            var salesRecords = _dataservice.GetSalesRecordData(Config.SalesRecordsFilePath);
-
-            var groupsByWeek = salesRecords.GroupBy(i => CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
+            var groupsByWeek = salesTable.GroupBy(i => CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
                                     i.DateAndTimeOfOrder.Date, CalendarWeekRule.FirstDay, DayOfWeek.Monday));
 
             Dictionary<int, decimal> data = new Dictionary<int, decimal>();
